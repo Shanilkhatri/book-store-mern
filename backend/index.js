@@ -17,7 +17,14 @@ app.use(express.json())
 app.use('/books',booksRoute)
 
 // use cors middleware to eliminate cors policy warnings when using microservices
-app.use(cors())
+app.use(cors()) // either this or
+
+// this
+// app.use(cors({
+//     origin:"http://localhost:5173",
+//     methods:['GET','PUT','POST','DELETE'],
+//     allowedHeaders:['Content-Type']
+// }))
 
 // define a route
 // using app.get() method
@@ -26,6 +33,7 @@ app.get('/',(req,res)=>{
     res.status(200).send("It worked!!")
 })
 
+// connect to DB
 mongoose.connect(MONGO_DB_URL).then(()=>{
     // connected successfully to DB
     console.log("Connected Successfully to the DB")
