@@ -13,9 +13,6 @@ const app = express()
 // to parse json successfully we'll make our app use a middleware
 app.use(express.json()) 
 
-// use a middleware we made for books to route named booksRoute.js
-app.use('/books',booksRoute)
-
 // use cors middleware to eliminate cors policy warnings when using microservices
 app.use(cors()) // either this or
 
@@ -25,6 +22,11 @@ app.use(cors()) // either this or
 //     methods:['GET','PUT','POST','DELETE'],
 //     allowedHeaders:['Content-Type']
 // }))
+
+// use a middleware we made for books to route named booksRoute.js
+app.use('/books',booksRoute)
+
+
 
 // define a route
 // using app.get() method
